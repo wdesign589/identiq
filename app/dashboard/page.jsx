@@ -15,15 +15,13 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { supabase } from "@/utils/supabase";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
-  const [active, setActive] = useState(
-    {name: '', 
-      icon: ''
-    }
-  );
-
+  const [active, setActive] = useState({ name: "", icon: "" });
+  const router = useRouter();
+  
   const wallets = [
     { name: "Coinbase", icon: "/coinbase.png" },
     { name: "MetaMask", icon: "/meta.png" },
@@ -43,7 +41,6 @@ export default function DashboardPage() {
   const [user, setUser] = useState({
     name: null,
   });
-
 
   useEffect(() => {
     getSession();
@@ -68,20 +65,16 @@ export default function DashboardPage() {
       .from("profiles")
       .select()
       .eq("id", id);
-    
+
     if (data) {
-      console.log(data)
+      console.log(data);
       setUser({
         name: data[0].full_name,
-       
       });
-console.log(user.name)
-     
+      console.log(user.name);
     }
     if (error) console.log(error);
   };
-
- 
 
   return (
     <div className="min-h-screen bg-gray-50 bg-[url('/bg4.jpg')]  bg-cover bg-center">
@@ -94,7 +87,7 @@ console.log(user.name)
             height={32}
             className="mr-2"
           />
-          
+
           <Image
             src="/text2.png"
             alt="text"
@@ -132,11 +125,12 @@ console.log(user.name)
                 <div
                   key={wallet.name}
                   className="cursor-pointer shadow-sm hover:shadow-lg transition-shadow bg-white rounded-3xl min-w-24 min-h-32 flex flex-col justify-center items-center"
-                  onClick={() => {setIsWalletModalOpen(true)
+                  onClick={() => {
+                    setIsWalletModalOpen(true);
                     setActive({
                       name: wallet.name,
-                      icon: wallet.icon
-                    })
+                      icon: wallet.icon,
+                    });
                   }}
                 >
                   <div className="">
