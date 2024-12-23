@@ -75,7 +75,13 @@ export default function DashboardPage() {
     }
     if (error) console.log(error);
   };
+  const logout = async () => {
+    let { error } = await supabase.auth.signOut();
 
+    if (!error) {
+      router.push("login");
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 bg-[url('/bg4.jpg')]  bg-cover bg-center">
       <nav className="container mx-auto px-6 py-6 flex items-center justify-between">
@@ -108,6 +114,7 @@ export default function DashboardPage() {
           <Button
             variant="ghost"
             className="w-full justify-start text-red-500 hover:text-red-600 hover:bg-red-50"
+           onClick={logout}
           >
             <LogOut className="mr-2 h-4 w-4" />
             Logout
