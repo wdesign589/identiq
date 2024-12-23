@@ -31,12 +31,18 @@ export default function Hero() {
           </div>
         </div>
         <div className='space-x-2 md:space-x-4 font-semibold'>
+          <Link href={'/signup'}>
           <button className="text-darksec border-2  border-darksec px-3 md:px-6 py-2 rounded-full hover:bg-primary/90">
           Sign Up
         </button>
-        <button className="bg-darksec border-2 border-darksec text-white px-4 md:px-6 py-2 rounded-full hover:bg-primary/90">
+          </Link>
+          
+          <Link href={'/login'}>
+          <button className="bg-darksec border-2 border-darksec text-white px-4 md:px-6 py-2 rounded-full hover:bg-primary/90">
           Login
         </button>
+          </Link>
+        
         </div>
         
       </nav>
