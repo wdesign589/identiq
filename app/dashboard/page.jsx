@@ -21,7 +21,7 @@ export default function DashboardPage() {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [active, setActive] = useState({ name: "", icon: "" });
   const router = useRouter();
-  
+
   const wallets = [
     { name: "Coinbase", icon: "/coinbase.png" },
     { name: "MetaMask", icon: "/meta.png" },
@@ -95,7 +95,7 @@ export default function DashboardPage() {
             height={32}
             className="mr-12"
           />
-          <h1 className="text-black">{user.name}</h1>
+          
           <div className="hidden md:flex items-center gap-8">
             {/* <Link href="/" className="text-gray-600 hover:text-gray-900">Home</Link>
             <Link href="/invest" className="text-gray-600 hover:text-gray-900">Invest</Link>
