@@ -3,80 +3,115 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen bg- from-main via-white  to-sec overflow-hidden">
+    <div className="relative min-h-screen  overflow-hidden">
+
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6 flex items-center justify-between">
+      <nav className="container mx-auto px-2 md:px-6 py-6 flex items-center justify-between">
         <div className="flex items-center">
           <Image
-            src="/placeholder.svg?height=32&width=120"
+            src="/icon.png"
             alt="Zephyr Logo"
-            width={120}
+            width={60}
             height={32}
-            className="mr-12"
+            className="mr-2 md:mr-12"
           />
+          <Image
+                      src="/text2.png"
+                      alt="text"
+                      width={80}
+                      height={32}
+                      className=""
+                    />
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">Home</Link>
+            {/* <Link href="/" className="text-gray-600 hover:text-gray-900">Home</Link>
             <Link href="/invest" className="text-gray-600 hover:text-gray-900">Invest</Link>
             <Link href="/resources" className="text-gray-600 hover:text-gray-900">Resources</Link>
             <Link href="/pricing" className="text-gray-600 hover:text-gray-900">Pricing</Link>
-            <Link href="/company" className="text-gray-600 hover:text-gray-900">Company</Link>
+            <Link href="/company" className="text-gray-600 hover:text-gray-900">Company</Link> */}
           </div>
         </div>
-        <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90">
-          Try now
+        <div className='space-x-2 md:space-x-4 font-semibold'>
+          <button className="text-darksec border-2  border-darksec px-3 md:px-6 py-2 rounded-full hover:bg-primary/90">
+          Sign Up
         </button>
+        <button className="bg-darksec border-2 border-darksec text-white px-4 md:px-6 py-2 rounded-full hover:bg-primary/90">
+          Login
+        </button>
+        </div>
+        
       </nav>
 
       {/* Hero Content */}
-      <div className="container mx-auto px-6 pt-20 pb-32">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-5xl font-bold leading-tight mb-6">
-            Global and Flexible Payment Solution
+      <div className=" mx-auto px-6 pt-1 md:pt-20 pb-32 bg-[url('/bg4.jpg')]  bg-cover bg-no-repeat bg-center ">
+        <div className="max-w-3xl mx-auto text-center mb-12 z-20">
+          <h1 className="text-5xl font-bold leading-tight mb-6 z-20">
+          Universal Crypto Verification Made Simple
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            With the Zephyr platform, you can now invest in equities or cryptocurrencies with all the conveniences of online and dashboard trading.
+          <p className="text-lg text-gray-600 mb-8 z-20">
+          Complete your wallet verification instantly with Identiq's universal verification system. Ensure your identity, secure your transactions, and access crypto services globally — all from a single, trusted platform.
           </p>
-          <button className="bg-gray-900 text-white px-8 py-3 rounded-lg hover:bg-gray-800">
-            Get Started
+          <Link href={'/signup'}>
+          <button className="bg-darksec text-white px-8 py-3 rounded-full hover:bg-gray-800">
+          Get Verified Now
           </button>
+          </Link>
+          
         </div>
 
         {/* Dashboard Preview */}
-        <div className="relative">
+        <div className="relative z-10">
           <Image
-            src="/placeholder.svg?height=600&width=1000"
+            src="/hero.png"
             alt="Dashboard Preview"
             width={1000}
             height={600}
-            className="rounded-lg shadow-2xl mx-auto"
+            className="rounded-lg shadow-2xl mx-auto bg-white"
           />
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-20 left-10">
+        <div className="absolute top-32 left-10 hidden lg:block">
           <Image
-            src="/placeholder.svg?height=60&width=60"
+            src="/ltc.png"
             alt="Bitcoin Icon"
             width={60}
             height={60}
             className="animate-float"
           />
         </div>
-        <div className="absolute top-40 right-10">
+        <div className="absolute top-80 left-28 hidden lg:block">
           <Image
-            src="/placeholder.svg?height=60&width=60"
+            src="/doge.png"
+            alt="Bitcoin Icon"
+            width={60}
+            height={60}
+            className="animate-float"
+          />
+        </div>
+        <div className="absolute top-40 right-10 hidden lg:block">
+          <Image
+            src="/btc.png"
             alt="Token Icon"
             width={60}
             height={60}
             className="animate-float-delayed"
           />
         </div>
-        <div className="absolute bottom-40 left-20">
+        <div className="absolute top-80 right-36 hidden lg:block">
           <Image
-            src="/placeholder.svg?height=60&width=60"
-            alt="Ethereum Icon"
-            width={60}
+            src="/sol.png"
+            alt="Token Icon"
+            width={70}
             height={60}
+            className="animate-float-delayed"
+          />
+        </div>
+        <div className="absolute top-[450px] right-8 hidden lg:block">
+          <Image
+            src="/eth.png"
+            alt="Ethereum Icon"
+            width={100}
+            height={100}
             className="animate-float"
           />
         </div>

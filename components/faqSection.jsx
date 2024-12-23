@@ -11,28 +11,28 @@ export default function FaqSection() {
   const faqData = [
     {
       id: 1,
-      question: 'What is the source of my stock market data?',
-      answer: ''
+      question: 'What is the source of user verification data?',
+      answer: 'Identiq leverages a decentralized network of trusted partners to verify user identities without sharing or exposing any private data.'
     },
     {
       id: 2,
-      question: 'Does using the stock market require prior familiarity with sock markets?',
-      answer: 'Anyone can start investing, regardless of their experience level. There are plenty of resources available to help beginners understand the basics.'
+      question: 'Do I need technical expertise to use Identiq?',
+      answer: 'No, Identiq is designed for seamless integration, ensuring a user-friendly experience even for those without prior technical knowledge.'
     },
     {
       id: 3,
-      question: 'Exist any unstated expenses or subscription fees?',
-      answer: ''
+      question: 'Are there any hidden fees or additional charges?',
+      answer: 'Identiq operates with complete transparency, with no hidden fees. All pricing details are provided upfront.'
     },
     {
       id: 4,
-      question: 'How can I get in touch with customer service if I have queries or problems?',
-      answer: ''
+      question: 'How can I contact support for queries or issues?',
+      answer: 'You can reach our dedicated customer service team through live chat, email, or our support portal for quick and efficient assistance.'
     }
   ]
 
   return (
-    <section className="bg-gradient-to-br from-purple-100 via-purple-50 to-pink-50">
+    <section className="bg-[url('/bg4.jpg')]  bg-cover bg-no-repeat bg-center">
       {/* FAQ Section */}
       <div className="container mx-auto px-6 py-24">
         <div className="text-center mb-12">
@@ -70,35 +70,48 @@ export default function FaqSection() {
       {/* CTA Section */}
       <div className="container mx-auto px-6 py-24">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <h2 className="text-4xl font-bold mb-8 md:mb-0">
+          <h2 className="text-4xl font-bold mb-8 md:mb-0 text-center md:text-left">
             Observantly safeguard<br />your finances
           </h2>
           <div className="space-x-4">
-            <button className="bg-gray-900 text-white px-8 py-3 rounded-full">
-              Learn More
+            <Link href={'/login'}>
+             <button className="bg-gray-900 text-white px-8 py-3 rounded-full">
+              Login
             </button>
+            </Link>
+            <Link href={'/signup'}>
             <button className="bg-primary text-white px-8 py-3 rounded-full">
-              Get Started
+              Sign Up
             </button>
+            </Link>
+            
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center">
-        <div>
+        <div className='space-y-4 flex flex-col items-center justify-center w-full'>
           <Image
-            src="/placeholder.svg?height=32&width=120"
-            alt="Zephyr Logo"
-            width={120}
+            src="/icon.png"
+            alt="Logo"
+            width={80}
             height={32}
           />
+
+          <Image
+                                src="/text2.png"
+                                alt="text"
+                                width={80}
+                                height={32}
+                                className=""
+                              />
         </div>
         <div className="flex items-center gap-8 mt-6 md:mt-0">
-          <Link href="/invest" className="text-gray-600 hover:text-gray-900">Invest</Link>
-          <Link href="/product" className="text-gray-600 hover:text-gray-900">Product</Link>
-          <Link href="/insight" className="text-gray-600 hover:text-gray-900">Insight</Link>
-          <Link href="/company" className="text-gray-600 hover:text-gray-900">Company</Link>
+          <Link href="/" className="text-gray-600 hover:text-gray-900">Invest</Link>
+          <Link href="/" className="text-gray-600 hover:text-gray-900">Product</Link>
+          <Link href="/" className="text-gray-600 hover:text-gray-900">Insight</Link>
+          <Link href="/" className="text-gray-600 hover:text-gray-900">Company</Link>
         </div>
         <div className="flex items-center gap-6 mt-6 md:mt-0">
           <Link href="#" className="text-gray-600 hover:text-gray-900">

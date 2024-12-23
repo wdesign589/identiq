@@ -16,6 +16,7 @@ export default {
 			main: "#222FED",
 			sec: "#CD80B4",
 			darksec: "#010010",
+			logo : "#4C36C8",
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'

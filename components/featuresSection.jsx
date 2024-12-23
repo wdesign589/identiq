@@ -20,7 +20,7 @@ export default function FeaturesSection() {
       <div className="grid md:grid-cols-3 gap-6 mb-24">
         <div className="bg-gray-50 p-8 rounded-2xl">
           <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-            <LockIcon className="w-6 h-6 text-primary" />
+            <LockIcon className="w-6 h-6 text-logo" />
           </div>
           <h3 className="font-semibold mb-3">Secure Storage</h3>
           <p className="text-gray-600 text-sm mb-4">
@@ -34,7 +34,7 @@ export default function FeaturesSection() {
 
         <div className="bg-gray-50 p-8 rounded-2xl">
           <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-            <ShieldIcon className="w-6 h-6 text-primary" />
+            <ShieldIcon className="w-6 h-6 text-logo" />
           </div>
           <h3 className="font-semibold mb-3">Protected by Insurance</h3>
           <p className="text-gray-600 text-sm mb-4">
@@ -48,7 +48,7 @@ export default function FeaturesSection() {
 
         <div className="bg-gray-50 p-8 rounded-2xl">
           <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-            <SearchIcon className="w-6 h-6 text-primary" />
+            <SearchIcon className="w-6 h-6 text-logo" />
           </div>
           <h3 className="font-semibold mb-3">Secure Storage</h3>
           <p className="text-gray-600 text-sm mb-4">
@@ -114,43 +114,20 @@ export default function FeaturesSection() {
           </div>
         </div>
 
-        <div className="bg-gray-50 rounded-3xl p-6">
+        <div className="bg-gray-50 rounded-3xl px-2 md:p-6">
           <h3 className="text-2xl font-bold text-center mb-6">
             Choose the best stock<br />to purchase right now
           </h3>
 
-          <div className="flex gap-2 mb-6">
+          <div className="flex gap-2 mb-6 items-center justify-center">
             <button className="bg-primary text-white px-6 py-2 rounded-full">Buy</button>
             <button className="text-gray-600 px-6 py-2">Sell</button>
             <button className="text-gray-600 px-6 py-2">Convert</button>
           </div>
 
-          <div className="space-y-3">
-            <div className="grid grid-cols-5 text-sm text-gray-500 px-4 py-2">
-              <span>Name</span>
-              <span>Price</span>
-              <span>Change</span>
-              <span>Market Cap</span>
-              <span></span>
-            </div>
-
-            {cryptoData.map((crypto) => (
-              <div key={crypto.name} className="grid grid-cols-5 items-center bg-white rounded-xl px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <img src={crypto.icon} alt={crypto.name} className="w-6 h-6" />
-                  <span className="font-medium">{crypto.name}</span>
-                  <span className="text-gray-500 text-sm">{crypto.symbol}</span>
-                </div>
-                <span>${crypto.price}</span>
-                <span className={crypto.change > 0 ? 'text-green-500' : 'text-red-500'}>
-                  {crypto.change > 0 ? '+' : ''}{crypto.change}%
-                </span>
-                <span>${crypto.marketCap}B</span>
-                <button className="bg-gray-100 text-primary px-4 py-1 rounded-full justify-self-end">
-                  Buy
-                </button>
-              </div>
-            ))}
+          <div className="space-y-3 flex items-center justify-center w-full">
+           <img src="/table2.png" className='w-full block md:hidden' alt="" />
+           <img src="/table.png" className='w-full hidden md:block' alt="" />
           </div>
         </div>
       </div>
@@ -192,56 +169,4 @@ function ArrowIcon(props) {
     </svg>
   )
 }
-
-// Sample crypto data
-const cryptoData = [
-  {
-    name: 'Bitcoin',
-    symbol: 'BTC',
-    price: '37,735.39',
-    change: 36.12,
-    marketCap: '375.01',
-    icon: '/placeholder.svg?height=24&width=24'
-  },
-  {
-    name: 'Ethereum',
-    symbol: 'ETH',
-    price: '25,482.0',
-    change: 27.64,
-    marketCap: '202.97',
-    icon: '/placeholder.svg?height=24&width=24'
-  },
-  {
-    name: 'Avalanche',
-    symbol: 'AVAX',
-    price: '6,872.15',
-    change: -27.69,
-    marketCap: '775.35',
-    icon: '/placeholder.svg?height=24&width=24'
-  },
-  {
-    name: 'Toncoin',
-    symbol: 'TON',
-    price: '13,762.22',
-    change: 50.85,
-    marketCap: '495.01',
-    icon: '/placeholder.svg?height=24&width=24'
-  },
-  {
-    name: 'Polkadot',
-    symbol: 'DOT',
-    price: '8,734.39',
-    change: -27.74,
-    marketCap: '765.01',
-    icon: '/placeholder.svg?height=24&width=24'
-  },
-  {
-    name: 'Bitcoin Cash',
-    symbol: 'BCH',
-    price: '2,24.62',
-    change: -7.45,
-    marketCap: '232.43',
-    icon: '/placeholder.svg?height=24&width=24'
-  }
-]
 
