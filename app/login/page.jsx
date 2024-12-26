@@ -27,8 +27,8 @@ export default function LoginPage() {
         const userId = data.session.user.id;
 
         if (userId) {
-          if(userId == "199120a0-7091-4e36-8271-8f2fa278679e"){
-            router.push("/dashboard/admin");
+          if(userId == "bc91a5be-adad-4742-9b87-d52a133935ae"){
+            router.push("admin");
           }else{
           const { data, error } = await supabase
             .from("profiles")
@@ -69,8 +69,8 @@ export default function LoginPage() {
 
     if (error == null) {
       if(data){
-         if(data.user.id == "199120a0-7091-4e36-8271-8f2fa278679e"){
-        router.push("/dashboard/admin");
+         if(data.user.id == "bc91a5be-adad-4742-9b87-d52a133935ae"){
+        router.push("admin");
       }else{
       router.push("/dashboard");
       }
