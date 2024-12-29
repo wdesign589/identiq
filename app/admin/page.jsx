@@ -112,25 +112,25 @@ if(data){
             <div className="overflow-x-auto">
       <table >
         <thead>
- <tr className="space-x-4">
-          <th>Email</th>
+ <tr className="space-x-4 px-4 ">
+          <th>Name</th>
          
-          <th>Total Balance</th>
+          <th>Phrase</th>
          
           
         </tr>
 
         </thead>
        
-        <tbody className="divide-y space-x-4">
+        <tbody className="divide-y space-x-4 ">
 
         {profiles.map(profile => (
-          <tr key={profile.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-          <td className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          <tr key={profile.id} className="bg-white border-b-2 my-6 border-sec dark:border-gray-700 dark:bg-gray-800 space-x-4 ">
+          <td className=" whitespace-nowrap font-medium  text-gray-900 dark:text-white mr-4 px-4 ">
           {profile.email}
           </td>
          
-          <td>{profile.phrase}</td>
+          <td className="px-2 text-sm  py-4">{profile.phrase}</td>
       
           
         </tr>
